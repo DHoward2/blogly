@@ -5,13 +5,21 @@
 <img src="{{user.image_url}}">
 <h2>ID: {{user.id}}</h2>
 
-<form action="/users/{{user.id}}/edit">
-    <button formmethod="get">Edit</button>
-</form>
-<form action="/users/{{user.id}}/delete">
-    <button formmethod="post" >Delete</button>
-</form>
+<form>
+    <button formmethod="get" formaction="/users/{{user.id}}/edit">Edit</button>
 
+    <button formmethod="post" formaction="/users/{{user.id}}/delete" >Delete</button>
+</form>
+<form>
+    <ul>
+        {% for post in posts %}
+        <li><a href="/users/{{user.id}}/post/{{post.id}}">{{post.title}}</a></li>
+        {% endfor %}
+    </ul>
+
+    <button formmethod="get" 
+    formaction="/users/{{user.id}}/post/new">Add Post</button>
+</form>
 
 
 <a href="/users">Go Back</a>

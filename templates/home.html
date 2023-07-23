@@ -2,5 +2,17 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 <h1>Home page</h1>
-<p>This is the home page</p>
+<nav>
+    <a href="/users">Users List</a>
+</nav>
+<div>
+    <h2>Blogly Feed</h2>
+    {% for post in posts %}
+    <div>
+        <h3>{{post.title}}</h3>
+        <p>{{post.content}}</p>
+        <p><small>By: {{post.user.first_name}} At: {{post.read_datetime}}</small></p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
